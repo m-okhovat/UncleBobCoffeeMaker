@@ -7,5 +7,9 @@
 
         public abstract void Start();
 
+        public void Done()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -13,14 +13,14 @@ namespace CoffeeMaker.Concretes
         }
 
 
-        public override void Complete()
+        public override void CompleteCycle()
         {
-            throw new System.NotImplementedException();
+            _coffeeMakerApi.SetIndicatorState(IndicatorState.Off);
         }
 
         public override void Done()
         {
-            throw new System.NotImplementedException();
+            _coffeeMakerApi.SetIndicatorState(IndicatorState.On);
         }
 
         private void CheckBrewButtonStatus()

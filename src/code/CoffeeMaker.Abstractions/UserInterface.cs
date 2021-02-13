@@ -5,7 +5,7 @@
 
         private HotWaterProvider _hotWaterProvider;
         private WarmCoffeeContainer _warmCoffeeContainer;
-
+        private bool _isBrewingComplete;
         public void Init(HotWaterProvider hotWaterProvider, WarmCoffeeContainer warmCoffeeContainer)
         {
             _hotWaterProvider = hotWaterProvider;
@@ -16,12 +16,19 @@
         {
             if (_hotWaterProvider.IsReady() && _warmCoffeeContainer.IsReady())
             {
-                _hotWaterProvider.Start();
+                _hotWaterProvider.Brew();
                 _warmCoffeeContainer.Start();
+                _isBrewingComplete = false;
             }
         }
 
-        public abstract void Complete();
+        public void Complete()
+        {
+            _isBrewingComplete = true;
+            CompleteCycle();
+        }
+
+        public abstract void CompleteCycle();
         public abstract void Done();
     }
 }
